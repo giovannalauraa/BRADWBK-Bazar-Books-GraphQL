@@ -53,6 +53,12 @@ public class CartController {
         return new CartDTO(cart.getId(), cart.getUser().getIdUser(), List.of());
     }
 
+        @MutationMapping
+    public String deleteCart(@Argument int cartId) {
+        cartService.deleteCart(cartId);
+        return "Carrinho deletado com sucesso.";
+    }
+
     @MutationMapping
     public CartItemDTO addCartItem(@Argument int cartId, @Argument CartItemInput item) {
         CartItem newItem = new CartItem();
@@ -71,9 +77,9 @@ public class CartController {
     }
 
     @MutationMapping
-    public Boolean deleteCartItem(@Argument int cartId, @Argument int itemId) {
+    public String removeCartItem(@Argument int cartId, @Argument int itemId) {
         cartItemService.deleteItem(cartId, itemId);
-        return true;
+        return "Item removido do carrinho com sucesso.";
     }
 
     @MutationMapping

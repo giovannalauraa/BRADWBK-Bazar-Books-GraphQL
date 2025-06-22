@@ -141,7 +141,10 @@ type Mutation {
     deleteNotification(idUser: Int!, id: Int!): String
 
     createCart(userId: Int!): Cart
+    deleteCart(cartId: ID!): String
     addCartItem(cartId: ID!, item: CartItemInput!): CartItem
+    updateCartItemQuantity(cartId: ID!, itemId: ID!, quantity: Int!): CartItem
+    removeCartItem(cartId: ID!, itemId: ID!): String
 
     createAddress(addressInput: AddressInput!): Address!
     updateAddress(id: ID!, addressInput: AddressInput!): Address
