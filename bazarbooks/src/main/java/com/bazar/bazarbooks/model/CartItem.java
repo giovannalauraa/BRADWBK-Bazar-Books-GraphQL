@@ -3,20 +3,22 @@ package com.bazar.bazarbooks.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "CartItem")
 public class CartItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_cart_item")
     private int id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cart_id", nullable = false)
     private Cart cart;
 
-    @Column(nullable = false)
+    @Column(name = "id_book", nullable = false)
     private Integer bookId;
 
-    @Column(nullable = false)
+    @Column(name = "uni_price", nullable = false)
     private double unitPrice;
 
     @Column(nullable = false)

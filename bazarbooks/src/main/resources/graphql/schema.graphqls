@@ -48,6 +48,19 @@ type CartItem {
   subtotal: Float!
 }
 
+type Address {
+    id: ID!
+    street: String!
+    number: Int!
+    complement: String
+    district: String!
+    city: String!
+    state: String!
+    postalCode: String!
+    latitude: Float!
+    longitude: Float!
+    user: User!
+}
 
 # ::::::::::::::: Inputs :::::::::::::::
 
@@ -78,6 +91,18 @@ input CartItemInput {
   quantity: Int!
 }
 
+input AddressInput {
+    street: String!
+    number: Int!
+    complement: String
+    district: String!
+    city: String!
+    state: String!
+    postalCode: String!
+    latitude: Float!
+    longitude: Float!
+    userId: Int!
+}
 
 # ::::::::::::::: Queries :::::::::::::::
 
@@ -94,6 +119,10 @@ type Query {
 
     cartByUserId(userId: Int!): Cart
     cartItemsByCartId(cartId: Int!): [CartItem!]!
+
+    getAllAddresses: [Address!]!
+    getAddressById(id: ID!): Address
+    getAddressesByUserId(userId: ID!): [Address!]!
 }
 
 # ::::::::::::::: Mutations :::::::::::::::
@@ -113,4 +142,8 @@ type Mutation {
 
     createCart(userId: Int!): Cart
     addCartItem(cartId: ID!, item: CartItemInput!): CartItem
+
+    createAddress(addressInput: AddressInput!): Address!
+    updateAddress(id: ID!, addressInput: AddressInput!): Address
+    deleteAddress(id: ID!): String!
 }

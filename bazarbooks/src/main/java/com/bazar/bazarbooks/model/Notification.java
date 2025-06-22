@@ -10,11 +10,12 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tb_notification") 
+@Table(name = "Notification")
 public class Notification {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_notification")
     private int idNotification;
 
     private String title;
@@ -24,9 +25,10 @@ public class Notification {
     @Column(name = "`read`") 
     private boolean read;
 
+    @Column(name = "sent_date")
     private LocalDateTime sentDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "id_user", referencedColumnName = "id_user")
     private User user;
 }

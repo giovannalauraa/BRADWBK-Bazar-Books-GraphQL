@@ -1,9 +1,6 @@
 package com.bazar.bazarbooks.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,17 +11,21 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "Book")
 public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_book")
     private int idBook;
 
     private String title;
+    @Column(name = "image_url")
     private String imageUrl;
     private String description;
     private String price;
     private double rating;
+    @Column(name = "review_count")
     private int reviewCount;
     private String store;
 }
