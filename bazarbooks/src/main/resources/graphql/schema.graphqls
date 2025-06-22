@@ -33,6 +33,22 @@ type Notification {
     user: User!
 }
 
+type Cart {
+  id_cart: ID!
+  userId: Int!
+  items: [CartItem!]!
+  total: Float!
+}
+
+type CartItem {
+  id: ID!
+  bookId: Int!
+  unitPrice: Float!
+  quantity: Int!
+  subtotal: Float!
+}
+
+
 # ::::::::::::::: Inputs :::::::::::::::
 
 input UserInput {
@@ -56,6 +72,13 @@ input NotificationInput {
     idUser: Int!
 }
 
+input CartItemInput {
+  bookId: Int!
+  unitPrice: Float!
+  quantity: Int!
+}
+
+
 # ::::::::::::::: Queries :::::::::::::::
 
 type Query {
@@ -68,6 +91,9 @@ type Query {
     getAllNotificationsByUser(idUser: Int!): [Notification!]!
     getUnreadNotificationsByUser(idUser: Int!): [Notification!]!
     getNotificationById(id: Int!): Notification
+
+    cartByUserId(userId: Int!): Cart
+    cartItemsByCartId(cartId: Int!): [CartItem!]!
 }
 
 # ::::::::::::::: Mutations :::::::::::::::
@@ -84,4 +110,7 @@ type Mutation {
     createFavoriteNotification(idUser: Int!, bookId: Int!): Notification
     markNotificationAsRead(id: Int!): String
     deleteNotification(idUser: Int!, id: Int!): String
+
+    createCart(userId: Int!): Cart
+    addCartItem(cartId: ID!, item: CartItemInput!): CartItem
 }
