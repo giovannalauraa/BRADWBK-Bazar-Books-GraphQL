@@ -1,0 +1,87 @@
+# ::::::::::::::: Types :::::::::::::::
+
+type User {
+    idUser: Int!
+    name: String!
+    email: String!
+}
+
+type Author {
+  id: Int!
+  name: String!
+  biography: String
+}
+
+type Book {
+    idBook: Int!
+    title: String!
+    imageUrl: String!
+    description: String!
+    price: String!
+    rating: Float!
+    reviewCount: Int!
+    store: String!
+    author: Author 
+}
+
+type Notification {
+    idNotification: Int!
+    title: String!
+    message: String!
+    read: Boolean!
+    sentDate: String
+    user: User!
+}
+
+# ::::::::::::::: Inputs :::::::::::::::
+
+input UserInput {
+    name: String!
+    email: String!
+}
+
+input BookInput {
+    title: String!
+    imageUrl: String!
+    description: String!
+    price: String!
+    rating: Float!
+    reviewCount: Int!
+    store: String!
+}
+
+input NotificationInput {
+    title: String!
+    message: String!
+    idUser: Int!
+}
+
+# ::::::::::::::: Queries :::::::::::::::
+
+type Query {
+    getAllUsers: [User!]!
+    getUserById(id: Int!): User
+
+    getAllBooks: [Book!]!
+    getBookById(id: Int!): Book
+
+    getAllNotificationsByUser(idUser: Int!): [Notification!]!
+    getUnreadNotificationsByUser(idUser: Int!): [Notification!]!
+    getNotificationById(id: Int!): Notification
+}
+
+# ::::::::::::::: Mutations :::::::::::::::
+
+type Mutation {
+    createUser(user: UserInput!): User
+    updateUser(id: Int!, user: UserInput!): User
+    deleteUser(id: Int!): String
+
+    createBook(book: BookInput!): Book
+    updateBook(id: Int!, book: BookInput!): Book
+    deleteBook(id: Int!): String
+
+    createFavoriteNotification(idUser: Int!, bookId: Int!): Notification
+    markNotificationAsRead(id: Int!): String
+    deleteNotification(idUser: Int!, id: Int!): String
+}
