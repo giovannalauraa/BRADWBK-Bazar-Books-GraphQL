@@ -79,6 +79,7 @@ input BookInput {
     rating: Float!
     reviewCount: Int!
     store: String!
+    authorId: Int!
 }
 
 input NotificationInput {
@@ -144,7 +145,7 @@ type Mutation {
     updateUser(id: Int!, user: UserInput!): User
     deleteUser(id: Int!): String
 
-    createBook(book: BookInput!): Book
+    createBook(bookInput: BookInput!): Book
     updateBook(id: Int!, book: BookInput!): Book
     deleteBook(id: Int!): String
 
