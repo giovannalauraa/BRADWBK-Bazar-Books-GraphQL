@@ -1,4 +1,4 @@
-package br.edu.ifsp.graphql.model;
+package com.bazar.bazarbooks.model;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
