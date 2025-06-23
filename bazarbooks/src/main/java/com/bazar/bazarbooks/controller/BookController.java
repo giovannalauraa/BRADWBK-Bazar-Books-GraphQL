@@ -29,8 +29,8 @@ public class BookController {
     }
 
     @MutationMapping
-    public Book createBook(@Argument BookInput book) {
-        return bookService.createBook(book);
+    public Book createBook(@Argument BookInput bookInput) {
+        return bookService.createBook(bookInput);
     }
 
     @MutationMapping
