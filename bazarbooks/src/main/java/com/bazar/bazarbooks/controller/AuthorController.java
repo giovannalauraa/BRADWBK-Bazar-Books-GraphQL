@@ -1,4 +1,4 @@
-package br.edu.ifsp.graphql.controller;
+package com.bazar.bazarbooks.controller;
 
 import java.util.List;
 
@@ -8,9 +8,9 @@ import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
-import br.edu.ifsp.graphql.dto.AuthorInput;
-import br.edu.ifsp.graphql.model.Author;
-import br.edu.ifsp.graphql.service.AuthorService;
+import com.bazar.bazarbooks.dto.AuthorInput;
+import com.bazar.bazarbooks.model.Author;
+import com.bazar.bazarbooks.service.AuthorService;
 
 @Controller
 public class AuthorController {
