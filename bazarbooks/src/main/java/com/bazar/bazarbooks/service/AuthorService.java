@@ -1,13 +1,11 @@
-package br.edu.ifsp.graphql.service;
+package com.bazar.bazarbooks.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import br.edu.ifsp.graphql.dto.AuthorInput;
-import br.edu.ifsp.graphql.model.Author;
-import br.edu.ifsp.graphql.repository.AuthorRepository;
+import com.bazar.bazarbooks.dto.AuthorInput;
+import com.bazar.bazarbooks.model.Author;
+import com.bazar.bazarbooks.repository.AuthorRepository;
 
 @Service
 public class AuthorService {
