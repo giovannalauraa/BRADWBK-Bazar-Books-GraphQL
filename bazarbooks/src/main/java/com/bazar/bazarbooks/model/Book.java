@@ -28,5 +28,7 @@ public class Book {
     @Column(name = "review_count")
     private int reviewCount;
     private String store;
+    @Column(name = "author_id")  
+    private Author author;
 }
 
