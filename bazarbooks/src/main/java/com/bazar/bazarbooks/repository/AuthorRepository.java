@@ -1,5 +1,4 @@
-package br.edu.ifsp.graphql.repository;
-
+package com.bazar.bazarbooks.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import br.edu.ifsp.graphql.model.Author;
