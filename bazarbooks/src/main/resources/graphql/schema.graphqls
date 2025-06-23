@@ -7,9 +7,11 @@ type User {
 }
 
 type Author {
-  id: Int!
-  name: String!
-  biography: String
+    idAuthor: Int!
+    name: String!
+    imageUrl: String
+    description: String
+    books: [Book]
 }
 
 type Book {
@@ -104,6 +106,13 @@ input AddressInput {
     userId: Int!
 }
 
+input AuthorInput {
+    name: String!
+    imageUrl: String
+    description: String
+    books: [BookInput]
+}
+
 # ::::::::::::::: Queries :::::::::::::::
 
 type Query {
@@ -123,6 +132,9 @@ type Query {
     getAllAddresses: [Address!]!
     getAddressById(id: ID!): Address
     getAddressesByUserId(userId: ID!): [Address!]!
+
+    getAllAuthors: [Author!]
+    getAuthorById(id: Int!): Author
 }
 
 # ::::::::::::::: Mutations :::::::::::::::
@@ -149,4 +161,8 @@ type Mutation {
     createAddress(addressInput: AddressInput!): Address!
     updateAddress(id: ID!, addressInput: AddressInput!): Address
     deleteAddress(id: ID!): String!
+
+    createAuthor(authorInput: AuthorInput!): Author
+    updateAuthor(id: Int!, authorInput: AuthorInput!): Author
+    deleteAuthor(id: Int!): String
 }
