@@ -8,11 +8,12 @@ public class BookInput {
     private double rating;
     private int reviewCount;
     private String store;
+    private int authorId;
 
     public BookInput() {}
 
     public BookInput(String title, String imageUrl, String description, String price,
-                     double rating, int reviewCount, String store) {
+                     double rating, int reviewCount, String store, int authorId) {
         this.title = title;
         this.imageUrl = imageUrl;
         this.description = description;
@@ -20,6 +21,7 @@ public class BookInput {
         this.rating = rating;
         this.reviewCount = reviewCount;
         this.store = store;
+        this.authorId = authorId;
     }
 
     public String getTitle() {
@@ -63,5 +65,11 @@ public class BookInput {
     }
     public void setStore(String store) {
         this.store = store;
+    }
+    public int getAuthorId() {
+        return authorId;
+    }
+    public void setAuthorId(int authorId) {
+        this.authorId = authorId;
     }
 }
