@@ -48,6 +48,10 @@ public class BookService {
         Optional<Book> optional = bookRepository.findById(id);
         if (optional.isPresent()) {
             Book book = optional.get();
+
+            Author author = authorRepository.findById(bookInput.getAuthorId())
+                    .orElseThrow(() -> new RuntimeException("Autor não encontrado"));
+
             book.setTitle(bookInput.getTitle());
             book.setImageUrl(bookInput.getImageUrl());
             book.setDescription(bookInput.getDescription());
@@ -55,6 +59,7 @@ public class BookService {
             book.setRating(bookInput.getRating());
             book.setReviewCount(bookInput.getReviewCount());
             book.setStore(bookInput.getStore());
+            book.setAuthor(author);
             bookRepository.save(book);
             return true;
         }
