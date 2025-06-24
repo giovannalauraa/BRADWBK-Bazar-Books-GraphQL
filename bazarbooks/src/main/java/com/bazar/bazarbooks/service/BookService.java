@@ -1,7 +1,9 @@
 package com.bazar.bazarbooks.service;
 
 import com.bazar.bazarbooks.dto.BookInput;
+import com.bazar.bazarbooks.model.Author;
 import com.bazar.bazarbooks.model.Book;
+import com.bazar.bazarbooks.repository.AuthorRepository;
 import com.bazar.bazarbooks.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

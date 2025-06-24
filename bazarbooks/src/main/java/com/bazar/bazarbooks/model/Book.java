@@ -28,7 +28,7 @@ public class Book {
     @Column(name = "review_count")
     private int reviewCount;
     private String store;
-    @Column(name = "author_id")  
+    @ManyToOne
+    @JoinColumn(name = "id_author")
     private Author author;
 }
-

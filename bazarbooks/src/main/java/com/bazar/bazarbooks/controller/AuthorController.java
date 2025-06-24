@@ -1,6 +1,7 @@
 package com.bazar.bazarbooks.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
@@ -10,13 +11,20 @@ import org.springframework.stereotype.Controller;
 
 import com.bazar.bazarbooks.dto.AuthorInput;
 import com.bazar.bazarbooks.model.Author;
+import com.bazar.bazarbooks.model.Book;
+import com.bazar.bazarbooks.repository.AuthorRepository;
 import com.bazar.bazarbooks.service.AuthorService;
+
+import jakarta.transaction.Transactional;
 
 @Controller
 public class AuthorController {
 
     @Autowired
     private AuthorService authorService;
+
+    @Autowired
+    private AuthorRepository authorRepository;
 
     @QueryMapping
     public List<Author> getAllAuthors() {
@@ -44,8 +52,9 @@ public class AuthorController {
     }
 
     @MutationMapping
-    public String deleteAuthor(@Argument int id) {
-        boolean deleted = authorService.deleteAuthor(id);
-        return deleted ? "Autor apagado com sucesso!" : "Autor não encontrado.";
+    @Transactional
+    public Boolean deleteAuthor(@Argument int id) {
+        return authorService.deleteAuthor(id);
     }
+
 }

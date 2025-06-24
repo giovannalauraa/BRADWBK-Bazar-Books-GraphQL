@@ -26,7 +26,7 @@ public class NotificationService {
     }
 
     public List<Notification> getUnreadNotificationsByUser(int idUser) {
-        return notificationRepository. findByUser_IdUserAndReadFalseOrderBySentDateDesc(idUser);
+        return notificationRepository.findByUser_IdUserAndReadFalseOrderBySentDateDesc(idUser);
     }
 
     public Notification getNotificationById(int id) {
@@ -44,7 +44,7 @@ public class NotificationService {
         n.setRead(false);
         n.setSentDate(LocalDateTime.now());
         n.setUser(userOpt.get());
-
+   
         return notificationRepository.save(n);
     }
 
