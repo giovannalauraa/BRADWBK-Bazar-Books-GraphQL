@@ -50,7 +50,7 @@ public class AuthorController {
         }
         return null;
     }
-
+ 
     @MutationMapping
     @Transactional
     public Boolean deleteAuthor(@Argument int id) {
